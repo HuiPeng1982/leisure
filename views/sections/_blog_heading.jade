@@ -1,20 +1,14 @@
 .heading
     ul.nav.nav-tabs
-        if path === '/blog/following' || path === '/blog/following/'
-            li.text.active
-                a(href='/blog/following') 我关注的日记
-        else
-            li.text
+        - var followingActive = path.indexOf('/blog/following')!= -1 ? 'active' : ''
+            li.text(class=followingActive)
                 a(href='/blog/following') 我关注的日记
 
-        if path === '/blog/mine' || path === '/blog/mine/'
-            li.text.active
-                a(href='/blog/mine') 我的日记
-        else
-            li.text
+        - var mineActive = path.indexOf('/blog/mine') != -1 ? 'active' : ''
+            li.text(class=mineActive)
                 a(href='/blog/mine') 我的日记
 
-        if path === '/blog' || path === '/blog/'
+        if followingActive != 'active' && mineActive != 'active'
             li.text.active
                 a(href='/blog') 全部日记
         else

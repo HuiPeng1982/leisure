@@ -30,3 +30,7 @@ block script
             }
         });
         $('.froala_editor').editable("setHTML",$('input[name="content_html"]').val(), false);
+        $('#delete-button').click(function () {
+            $('input[name="is_delete"]').val("true");
+            $('form#blogForm')[0].submit();
+        });

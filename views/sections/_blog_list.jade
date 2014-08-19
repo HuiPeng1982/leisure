@@ -6,15 +6,16 @@
                     a.title(href='#{"/blog/" + blog._id}', target='_blank') #{blog.title}
                     a.author-avatar(href='#')
                         img.img-circle(src='#{blog.user.avatar}')
-                    a.content(href='#', target='_blank')
-                        | #{blog.content_text}
+                    a.content(href='#')
+                        | #{blog.content_text.length > 180 ? blog.content_text.substr(0, 180) + '... ...' : blog.content_text}
                     .article-info
                         a.author(href='#') &nbsp; #{blog.user.email}
                         i.fa.fa-book
                         a.notebook(href='#') &nbsp; 日記本
                         i.fa.fa-th
                         each tag in blog.tags
-                            a.collections(href='#') &nbsp; #{tag}
+                            - var link = path.indexOf('/blog/mine') != -1 || path.indexOf('/blog/following') != -1 ? (path.indexOf('/blog/mine') != -1 ? '/blog/mine/tag/'+ tag : '/blog/following/tag/'+ tag ) : '/blog/tag/'+ tag
+                            a.collections(href='#{link}') &nbsp; #{tag}
                         a(href='#', target='_blank')
                             i.fa.fa-comments-o
                             | 1
@@ -23,8 +24,8 @@
                             | 3
                         a.bookmark(data-method='post', data-remote='true', href='#', rel='nofollow')
                             i.fa.fa-bookmark-o
-                        if user.email === blog.user.email
-                            a.update(href='#{"/blog/" + blog._id + "/edit"}', target='_blank')
+                        if user && user.email === blog.user.email
+                            a.update(href='#{"/blog/" + blog._id + "/edit"}', target='_blank', data-toggle='tooltip', data-placement='bottom', title='修改', role='button')
                                 i.fa.fa-edit
     .more
         button.more-button

@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
-    Blog = mongoose.model('Blog'),
-    extend = require('util');
+    Blog = mongoose.model('Blog');
 
 exports.load = function(req, res, next, id){
     Blog.load(id, function (err, blog) {
@@ -11,8 +10,21 @@ exports.load = function(req, res, next, id){
     })
 };
 
+exports.tag = function(req, res, next, tag){
+    req.tag = tag;
+    next();
+};
+
+exports.topic = function(req, res, next, topic){
+    req.topic = topic;
+    next();
+};
+
 var list = function(req, res, criteria, title){
     var criteria = criteria || {};
+    if(req.tag){
+        criteria.tags = req.tag;
+    }
     criteria.is_delete = false;
     var title = title || '日记';
     var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
@@ -57,7 +69,7 @@ exports.create = function(req, res){
 };
 
 exports.show = function(req, res){
-    res.render('blog/new', {
+    res.render('blog/show', {
         title: '日记 - ' + req.blog.title ,
         blog: req.blog,
         error: req.flash('error')
@@ -65,7 +77,7 @@ exports.show = function(req, res){
 };
 
 exports.edit = function(req, res){
-    res.render('blog/new', {
+    res.render('blog/edit', {
         title: '日记 - ' + req.blog.title ,
         blog: req.blog,
         error: req.flash('error')
@@ -73,13 +85,15 @@ exports.edit = function(req, res){
 };
 
 exports.update = function(req, res, next){
-    var upsertData = new Blog(req.body);
-    upsertData.tags = upsertData.tags.join().split(/\s*,\s*/);
-    console.log(upsertData);
-    var id = upsertData._id;
-    delete upsertData._id;
-    delete upsertData.created_at;
-    Blog.update({_id: id}, upsertData, function(err){
+    var blog = new Blog(req.body);
+    var update = {};
+    update.title = blog.title;
+    update.description = blog.description;
+    update.content_html = blog.content_html;
+    update.content_text = blog.content_text;
+    update.tags = blog.tags.join().split(/\s*,\s*/);
+    update.is_delete = blog.is_delete;
+    Blog.findByIdAndUpdate(req.blog._id, update, function(err){
         if (err) return next(err);
         res.redirect('/blog/mine');
     });

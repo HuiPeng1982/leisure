@@ -56,9 +56,17 @@ module.exports = function (app, passport) {
 
     var blog = require('../routes/blog');
     app.param('blog', blog.load);
+    app.param('blogTag', blog.tag);
+    app.param('blogTopic', blog.topic);
     app.get('/blog', blog.index);
+    app.get('/blog/tag/:blogTag', blog.index);
+    app.get('/blog/topic/:blogTopic', blog.index);
     app.get('/blog/following', [auth.requiresLogin] , blog.indexFollowing);
+    app.get('/blog/following/tag/:blogTag', [auth.requiresLogin] , blog.indexFollowing);
+    app.get('/blog/following/topic/:blogTopic', [auth.requiresLogin] , blog.indexFollowing);
     app.get('/blog/mine', [auth.requiresLogin] ,blog.indexMine);
+    app.get('/blog/mine/tag/:blogTag', [auth.requiresLogin] ,blog.indexMine);
+    app.get('/blog/mine/topic/:blogTopic', [auth.requiresLogin] ,blog.indexMine);
     app.get('/blog/new', [auth.requiresLogin] ,blog.new);
     app.post('/blog', [auth.requiresLogin] ,blog.create);
     app.get('/blog/:blog', blog.show);

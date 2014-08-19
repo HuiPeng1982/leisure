@@ -34,5 +34,5 @@ form#blogForm.form-horizontal(action=action, method='post', role='form')
         .form-group
             .controls
                 - if (!blog.isNew)
-                    button.btn.btn-danger(type='button') 删除此日记
+                    button#delete-button.btn.btn-danger(type='button') 删除此日记
                 button.btn.btn-success(type='submit') #{actionName}

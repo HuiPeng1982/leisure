@@ -1,0 +1,32 @@
+extends ../layout
+block css
+block illustrative
+block content
+    .leisure-form
+        input(id="content_html", type="hidden", name="content_html", value="#{blog.content_html}")
+        .article
+            .preview
+                h1.title #{blog.title}
+                .article-info
+                    - var m = blog.created_at;
+                    - var dateString = m.getFullYear() +"/"+("0" + (m.getMonth()+1)).slice(-2) +"/"+("0" + m.getDate()).slice(-2) + " " +("0" + m.getHours()).slice(-2) + ":" +("0" + m.getMinutes()).slice(-2) + ":" +("0" + m.getSeconds()).slice(-2);
+                    p
+                        | #{blog.user.email}
+                        | 发表于
+                        a(href='#')
+                            i.fa.fa-book
+                            | #{blog.user.neck_name}
+                        | #{dateString}
+                        span
+                            | xx: xxx
+                        | 标签:
+                .show-content
+                    script.
+                        document.write(document.getElementById("content_html").value);
+
+
+
+block js
+block script
+    script.
+        //$('.show-content').text(($('input[name="content_html"]').val()));
