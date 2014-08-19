@@ -1,0 +1,35 @@
+extends ../layout
+block css
+    link(rel='stylesheet', href='/stylesheets/medium-editor.min.css')
+    link(rel='stylesheet', href='/stylesheets/flat.min.css')
+    link(rel='stylesheet', href='/stylesheets/medium-editor-insert-plugin.min.css')
+block illustrative
+    include ../sections/_HPillustrative
+block content
+    include ../sections/_HPblog
+block js
+    script(src='/javascripts/medium-editor.min.js')
+    script(src='/javascripts/medium-editor-insert-plugin.all.min.js')
+block script
+    script.
+        var editor = new MediumEditor('.medium-editor-content', {
+          buttons: ['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'orderedlist', 'unorderedlist', 'pre', 'image'],
+          buttonLabels: 'fontawesome',
+          firstHeader: 'h1',
+          secondHeader: 'h2',
+          targetBlank: true
+        });
+        var editor2 = new MediumEditor('.medium-editor-title', {
+          disableToolbar: "true"
+        });
+        $(function () {
+          $('.medium-editor-content').mediumInsert({
+            editor: editor,
+            addons: {
+              images: {
+                imagesUploadScript: '/blog/imagesUpload',
+                imagesDeleteScript: '/blog/imagesDelete'
+              }
+            }
+          });
+        });

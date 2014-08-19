@@ -1,0 +1,38 @@
+- var action = '/blog'
+- action += blog.isNew ? '/' : '/' + blog._id
+- var actionName = path === '/blog/new' ? '创建新日记' : '日记内容修改'
+form#blogForm.form-horizontal(action=action, method='post', role='form')
+    fieldset
+        legend #{actionName}
+        input(type='hidden', name='_csrf', value='#{csrf_token}')
+        - if (!blog.isNew)
+            input(type="hidden", name="_method", value="PUT")
+            input(type="hidden", name="is_delete", value="false")
+        .form-group
+            .controls
+                .input-group
+                    span.input-group-addon
+                        i.fa.fa-align-left.wfa &nbsp;标题
+                    input.form-control(type='text',name='title', value='#{blog.title}', placeholder='不超过20个字')
+        .form-group
+            .controls
+                .froala_editor
+                    //| #{(blog.content_html)}
+
+                input(type="hidden", name="content_html", value="#{blog.content_html}")
+                input(type="hidden", name="content_text", value="#{blog.content_text}")
+        .form-group
+            .controls
+                .input-group
+                    span.input-group-addon
+                        i.fa.fa-tags.wfa &nbsp;标签
+                    input.form-control.tokenfield(type='text',name='tags', value='#{blog.tags}')
+                p.help-block
+                    small 使用英文逗号或者回车分割
+
+
+        .form-group
+            .controls
+                - if (!blog.isNew)
+                    button.btn.btn-danger(type='button') 删除此日记
+                button.btn.btn-success(type='submit') #{actionName}

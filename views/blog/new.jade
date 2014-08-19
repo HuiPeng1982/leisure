@@ -1,0 +1,32 @@
+extends ../layout
+block css
+    link(rel='stylesheet', href='/stylesheets/froala_editor.min.css')
+block illustrative
+block content
+    .leisure-form
+        include _form
+block js
+    script(src='/javascripts/froala_editor.min.js')
+    |<!--[if lt IE 9]>
+    |    <script src="/javascripts/froala_editor_ie8.min.js"></script>
+    |<![endif]-->
+    script(src='/javascripts/zh_cn.js')
+block script
+    include _validator
+    script.
+        $('.froala_editor').editable({
+            inlineMode: false,
+            imageUploadURL: "/blog/imagesUpload",
+            imageUploadParams: {_csrf: '#{csrf_token}'},
+            imageDeleteURL: "/blog/imagesDelete",
+            imageDeleteParams: {_csrf: '#{csrf_token}'},
+            language: 'zh_cn',
+            minHeight: 300,
+            maxHeight: 500,
+            placeholder: "",
+            contentChangedCallback: function () {
+              $('input[name="content_html"]').val($(".froala_editor").editable("getHTML"));
+              $('input[name="content_text"]').val($(".froala_editor").editable("getText"));
+            }
+        });
+        $('.froala_editor').editable("setHTML",$('input[name="content_html"]').val(), false);

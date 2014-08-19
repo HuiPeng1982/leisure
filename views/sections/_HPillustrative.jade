@@ -1,0 +1,49 @@
+if illustrative.type === 1
+    .description-with-background-img(style='background-image: url(/images/6bqqcbsmqTYmrZyNUCdy.jpg)')
+        .text
+            h1.black-background 专题#{illustrativeTitle}
+            h3.black-shadow 让思想汇聚、流传
+            p 专题的内容由多位写作者提供
+            a.btn.btn-large.btn-success.btn-block(href='#')
+                span.fa.fa-paper-plane  新建专题
+        .info
+            i.fa.fa-info-circle.ppover(data-container='body', data-trigger='hover', data-toggle='popover', data-placement='left', data-html='true', data-content='摄影：<a href=‘#’>惠鹏</a></br>宝贝：<a href=‘#’>惠鹏</a></br>服装：<a href=‘#’>惠鹏</a>', role='button')
+else if illustrative.type === 2
+    .description-with-author
+        h3
+            b 南园三舍
+        .detail
+            h6
+                a(href='/notebooks/95608/latest')
+                    em 13 篇文章
+                | ・
+                a(href='/notebooks/95608/subscribers')
+                    em 0 人订阅
+                | ・
+                em 字数: 22785
+        .input-group.menu
+            .input-group-btn
+                button.btn.btn-default.btn-success.btn-sm(type='button')
+                    span.glyphicon.glyphicon-plus
+                    | 添加订阅
+                button.btn.btn-default.btn-success.btn-sm(type='button')
+                    span.glyphicon.glyphicon-cloud-upload
+                    | 添加订阅
+                button.btn.btn-default.btn-success.btn-sm.dropdown-toggle(type='button', data-toggle='dropdown')
+                    span.glyphicon.glyphicon-new-window
+                ul.dropdown-menu(role='menu')
+                    li
+                        a(href='#')
+                            span.fa.fa-weibo.on.fa-square-o   分享到微博
+                    li
+                        a(href='#')
+                            span.fa.fa-weixin.on.fa-square-o   分享到微博
+                    li
+                        a(href='#')
+                            span.fa.fa-qq.on.fa-square-o   分享到微博
+        .author
+            .avatar
+                a(href='#')
+                    img.img-circle(src='/images/avatar.jpeg')
+            h5.name
+                a(href='#') 惠鹏

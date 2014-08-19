@@ -1,0 +1,30 @@
+.heading
+    ul.nav.nav-tabs
+        if path === '/topic/following' || path === '/topic/following/'
+            li.text.active
+                a(href='/topic/following') 我关注的专题
+        else
+            li.text
+                a(href='/topic/following') 我关注的专题
+
+        if path === '/topic/mine' || path === '/topic/mine/'
+            li.text.active
+                a(href='/topic/mine') 我的专题
+        else
+            li.text
+                a(href='/topic/mine') 我的专题
+
+        if path === '/topic' || path === '/topic/'
+            li.text.active
+                a(href='/topic') 全部专题
+        else
+            li.text
+                a(href='/topic') 全部专题
+
+        li.text
+            a(href='#')
+                i.fa.fa-refresh
+        li.search.pull-right
+            form
+                input(required='', type='text', style='ap')
+                label(alt='搜索', placeholder='开始搜索')

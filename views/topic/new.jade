@@ -1,0 +1,17 @@
+extends ../layout
+block illustrative
+block content
+    .leisure-form
+        include _form
+block script
+    include _validator
+    script.
+        $("#media").fileinput({
+            showUpload: false,
+            browseClass: "btn btn-success",
+            browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+            browseLabel: " 选择照片",
+            removeClass: "btn btn-danger",
+            removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
+            removeLabel: " 删除"
+        });

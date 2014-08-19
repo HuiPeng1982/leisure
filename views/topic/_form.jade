@@ -1,0 +1,40 @@
+- var action = '/topic'
+- action += topic.isNew ? '/' : '/' + topic._id
+- var actionName = path === '/topic/new' ? '创建新专题' : '专题内容修改'
+form#topicForm.form-horizontal(action=action, method='post', role='form', enctype='multipart/form-data')
+    fieldset
+        legend #{actionName}
+        input(type='hidden', name='_csrf', value='#{csrf_token}')
+        - if (!topic.isNew)
+            input(type="hidden", name="_method", value="PUT")
+            input(type="hidden", name="is_delete", value="false")
+        .form-group
+            .controls
+                .input-group
+                    span.input-group-addon
+                        i.fa.fa-align-left.wfa &nbsp;标题
+                    input.form-control(type='text',name='title', value='#{topic.title}', placeholder='不超过10个字')
+        .form-group
+            .controls
+                .input-group
+                    span.input-group-addon
+                        i.fa.fa-tags.wfa &nbsp;标签
+                    input.form-control.tokenfield(type='text',name='tags', value='#{topic.tags}', placeholder='')
+                p.help-block
+                    small 使用英文逗号或者回车分割
+        .form-group
+            .controls
+                input#media(name='pic', type='file', accept='image/*')
+                p.help-block
+                    small 推荐540像素x1230像素，若不上传，则使用默认背景
+        .form-group
+            .controls
+                .input-group
+                    span.input-group-addon
+                        i.fa.fa-reorder.wfa &nbsp;简介
+                    textarea.form-control.textares(name='description', rows='4', placeholder='为专题增加适当的描述，字数限制20')=topic.description
+        .form-group
+            .controls
+                - if (!topic.isNew)
+                    button.btn.btn-danger(type='button') 删除此专题
+                button.btn.btn-success(type='submit') #{actionName}

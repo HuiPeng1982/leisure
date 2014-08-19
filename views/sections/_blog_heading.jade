@@ -1,0 +1,30 @@
+.heading
+    ul.nav.nav-tabs
+        if path === '/blog/following' || path === '/blog/following/'
+            li.text.active
+                a(href='/blog/following') 我关注的日记
+        else
+            li.text
+                a(href='/blog/following') 我关注的日记
+
+        if path === '/blog/mine' || path === '/blog/mine/'
+            li.text.active
+                a(href='/blog/mine') 我的日记
+        else
+            li.text
+                a(href='/blog/mine') 我的日记
+
+        if path === '/blog' || path === '/blog/'
+            li.text.active
+                a(href='/blog') 全部日记
+        else
+            li.text
+                a(href='/blog') 全部日记
+
+        li.text
+            a(href='#')
+                i.fa.fa-refresh
+        li.search.pull-right
+            form
+                input(required='', type='text', new-style='ap')
+                label(alt='搜索', placeholder='开始搜索')

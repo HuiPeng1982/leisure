@@ -1,0 +1,89 @@
+.leisure-description {
+    left: 170px;
+    width: 450px;
+    height: 100%;
+    position: absolute;
+    box-shadow: inset -2px 0 5px rgba(0,0,0,0.25);
+}
+.leisure-description a{
+    text-decoration: none;
+}
+.leisure-description .text {
+
+}
+.leisure-description .text .black-background {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgba(0,0,0,0.8);
+}
+.leisure-description .text .black-shadow {
+    text-shadow: 0 1px 0 rgba(0,0,0,1);
+}
+.description-with-background-img {
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.description-with-background-img .text {
+    position: absolute;
+    bottom: 0;
+    padding: 30px;
+    color: rgba(255,255,255,1);
+}
+.description-with-background-img .text {
+    position: absolute;
+    bottom: 0;
+    padding: 30px;
+    color: rgba(255,255,255,1);
+}
+.description-with-background-img .info {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 0;
+    font-size: 20px;
+    text-align: right;
+    color: rgba(255,255,255,1);
+}
+.description-with-author {
+    height: 100%;
+    padding: 50px 30px;
+    text-align: center;
+    color: rgba(85,85,85,1);
+}
+.description-with-author a{
+    color: rgba(85,85,85,1);
+}
+.description-with-author .menu {
+    padding-top: 10px;
+}
+.description-with-author .dropdown-menu {
+    margin: 2px 0 0 220px;
+}
+.description-with-author .author {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    right: 30px;
+}
+.description-with-author .author .avatar {
+    margin: 0 auto;
+}
+.description-with-author .author .avatar img {
+    width: 45px;
+    height: 45px;
+}
+.description-with-author .author .name {
+    padding-top: 10px;
+}
+@media (max-width: 768px) {
+    .leisure-description {
+        display: none;
+    }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+    .leisure-description {
+        left: 50px;
+        width: 300px;
+    }
+}

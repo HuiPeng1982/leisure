@@ -1,0 +1,31 @@
+.list.p100
+    ul.list-ul
+        each blog in blogs
+            li
+                .content
+                    a.title(href='#{"/blog/" + blog._id}', target='_blank') #{blog.title}
+                    a.author-avatar(href='#')
+                        img.img-circle(src='#{blog.user.avatar}')
+                    a.content(href='#', target='_blank')
+                        | #{blog.content_text}
+                    .article-info
+                        a.author(href='#') &nbsp; #{blog.user.email}
+                        i.fa.fa-book
+                        a.notebook(href='#') &nbsp; 日記本
+                        i.fa.fa-th
+                        each tag in blog.tags
+                            a.collections(href='#') &nbsp; #{tag}
+                        a(href='#', target='_blank')
+                            i.fa.fa-comments-o
+                            | 1
+                        a.like-icon-button(data-method='post', data-remote='true', data-type='json', href='#', rel='nofollow')
+                            i.fa.fa-heart-o
+                            | 3
+                        a.bookmark(data-method='post', data-remote='true', href='#', rel='nofollow')
+                            i.fa.fa-bookmark-o
+                        if user.email === blog.user.email
+                            a.update(href='#{"/blog/" + blog._id + "/edit"}', target='_blank')
+                                i.fa.fa-edit
+    .more
+        button.more-button
+            span 点击查看更多

@@ -1,0 +1,21 @@
+div.main-nav.leisure-nav
+    i.fa.fa-reorder.leisure-nav.main-nav-switch
+    ul.nav.nav-stacked.main-nav-stacked
+        - var dashboardActive = path.indexOf('/dashboard') == 0 ? 'active' : ''
+        li(class=dashboardActive)
+            a.leisure-nav.tultips(href='#', data-toggle='tooltip', data-placement='right', title='首页', role='button')
+                i.fa.fa-home
+                span &nbsp;&nbsp;首页
+        - var tipicActive = path.indexOf('/topic') == 0 ? 'active' : ''
+        li(class=tipicActive)
+            a.leisure-nav.tultips(href='#', data-toggle='tooltip', data-placement='right', title='专题', role='button')
+                i.fa.fa-th-list
+                span &nbsp;&nbsp;专题
+        li
+            a.leisure-nav.tultips(href='#', data-toggle='tooltip', data-placement='right', title='热门', role='button')
+                i.fa.fa-thumbs-o-up
+                span &nbsp;&nbsp;热门
+        li
+            a.leisure-nav.tultips(href='#', data-toggle='tooltip', data-placement='right', title='收藏', role='button')
+                i.fa.fa-paperclip
+                span &nbsp;&nbsp;收藏

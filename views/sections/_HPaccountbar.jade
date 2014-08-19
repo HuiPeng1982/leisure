@@ -1,0 +1,19 @@
+div.right-nav.right-nav-open
+    ul.nav.nav-stacked
+        if user
+            li
+                a.tultips(href='#', data-toggle='tooltip', data-placement='left', title='设置', role='button')
+                    i.fa.fa-cog.leisure-nav.right-nav-label
+            li.index1
+                a.tultips(href='#', data-toggle='tooltip', data-placement='left', title='个人信息', role='button')
+                    i.fa.fa-folder-open-o.leisure-nav.right-nav-label
+            li.index2
+                a.tultips(href='#', data-toggle='tooltip', data-placement='left', title='社区设置', role='button')
+                    i.fa.fa-cogs.leisure-nav.right-nav-label
+            li.index3
+                a.tultips(href='/account/logout', data-toggle='tooltip', data-placement='left', title='用户注销', role='button')
+                    i.fa.fa-sign-out.leisure-nav.right-nav-label
+        else
+            li
+                a.tultips(href='/account/login', data-toggle='tooltip', data-placement='left', title='登录', role='button')
+                    i.fa.fa-sign-in.leisure-nav.right-nav-label

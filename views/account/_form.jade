@@ -1,0 +1,30 @@
+- var actionName = path === '/account/login' ? '登录' : '注册'
+
+form#accountForm.form-horizontal(action='#{path}', method='post', role='form')
+    fieldset
+        legend 用户#{actionName}
+        input(type='hidden', name='_csrf', value='#{csrf_token}')
+        .form-group
+            //label.col-sm-2.control-label(for='email') Email
+            .controls
+                .input-group
+                    span.input-group-addon
+                        i.fa.fa-envelope-o.wfa &nbsp;电邮
+                    input.form-control(name='email', type='text', placeholder='')
+                p.help-block
+                    small
+        .form-group
+            //label.col-sm-2.control-label(for='password') 密码
+            .controls
+                .input-group
+                    span.input-group-addon
+                        i.fa.fa-unlock-alt.wfa &nbsp;密码
+                    input.form-control(name='password', type='password', placeholder='')
+                p.help-block
+                    small
+        .form-group
+            //label.control-label
+            .controls
+                button.btn.btn-success(type='submit') #{actionName}
+
+

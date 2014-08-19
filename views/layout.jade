@@ -1,0 +1,40 @@
+doctype html
+html
+    include sections/_head
+    block css
+    body
+        .leisure-wrapper
+            #HPnavbar
+                include sections/_HPnavbar
+            #HPaccountbar
+                include sections/_HPaccountbar
+            #HPboard.leisure-board
+                .leisure-description
+                    include sections/_HPillustrative
+                    block illustrative
+                .leisure-content
+                    block content
+        include sections/_js
+        block js
+        block extra_content
+        script.
+            $(document).ready(function () {
+                $(".tultips").tooltip();
+
+                $(".ppover").popover({delay: { show: 0, hide: 2000 }});
+
+                $(".main-nav-switch").click(function () {
+                    $(".main-nav").toggleClass("main-nav-open");
+                });
+
+                $(".right-nav .nav>li:first-child").click(function () {
+                    $(".right-nav .nav>li").toggleClass("right-nav-label-open");
+                });
+
+                $('.tokenfield').tokenfield();
+
+            });
+        script
+            include sections/_growl
+        block script
+

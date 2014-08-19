@@ -1,0 +1,34 @@
+script.
+    $(document).ready(function () {
+        $('#accountForm').bootstrapValidator({
+            message: '此项内容不符合规则',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                email: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Email地址不能为空！'
+                        },
+                        emailAddress: {
+                            message: '请填入合法Email地址！'
+                        }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能为空！'
+                        },
+                        stringLength: {
+                            min: 6,
+                            message: '密码需要至少6个字符！'
+                        }
+                    }
+                }
+            }
+        });
+    })

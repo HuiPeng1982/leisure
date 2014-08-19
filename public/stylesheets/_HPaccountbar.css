@@ -1,0 +1,63 @@
+/*右侧NAV*/
+.right-nav {
+    width: 50px;
+    display: block;
+    position: absolute;
+    right: -50px;
+    top: 60px;
+    z-index: 10;
+}
+.right-nav-open {
+    right: 0px !important;
+}
+.right-nav-label {
+    width: 50px;
+    height: 50px;
+    background: rgba(47,47,47,1);
+    line-height: 50px;
+    color: rgba(255,255,255,1);;
+    text-align: center;
+    display: block;
+    position: relative;
+    right: 0px;
+    z-index: 10;
+    opacity: 0.8;
+}
+.right-nav-label:hover {
+    font-size: 30px;
+    opacity: 1;
+}
+.right-nav .nav>li {
+    right: -50px;
+}
+.right-nav-label-open {
+    right: 0px !important;
+}
+.right-nav .nav>li>a {
+    position: relative;
+    padding: 0;
+}
+.right-nav .nav>li:first-child {
+    right: 0px;
+}
+.right-nav .nav>li.index1 {
+    transition: all linear 0.25s;
+    -ms-transition: all linear 0.25s;
+    -moz-transition: all linear 0.25s;
+    -webkit-transition: all linear 0.25s;
+    -o-transition: all linear 0.25s;
+}
+.right-nav .nav>li.index2 {
+    transition: all linear 0.35s;
+    -ms-transition: all linear 0.35s;
+    -moz-transition: all linear 0.35s;
+    -webkit-transition: all linear 0.35s;
+    -o-transition: all linear 0.35s;
+}
+.right-nav .nav>li.index3 {
+    transition: all linear 0.45s;
+    -ms-transition: all linear 0.45s;
+    -moz-transition: all linear 0.45s;
+    -webkit-transition: all linear 0.45s;
+    -o-transition: all linear 0.45s;
+}
