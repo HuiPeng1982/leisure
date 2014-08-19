@@ -9,4 +9,9 @@ block js
 block script
     script.
         $(document).ready(function () {
+            $("#search-input").keyup(function(event){
+                if(event.keyCode == 13){
+                    window.location.replace($("#search-path").val() + "/search/" + $("#search-input").val());
+                }
+            });
         });

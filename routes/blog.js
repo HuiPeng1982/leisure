@@ -15,6 +15,11 @@ exports.tag = function(req, res, next, tag){
     next();
 };
 
+exports.search = function(req, res, next, search){
+    req.search = search;
+    next();
+};
+
 exports.topic = function(req, res, next, topic){
     req.topic = topic;
     next();
@@ -24,6 +29,9 @@ var list = function(req, res, criteria, title){
     var criteria = criteria || {};
     if(req.tag){
         criteria.tags = req.tag;
+    }
+    if(req.search){
+        criteria.content_text = new RegExp(req.search);
     }
     criteria.is_delete = false;
     var title = title || '日记';

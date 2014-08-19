@@ -19,6 +19,7 @@
             a(href='#')
                 i.fa.fa-refresh
         li.search.pull-right
-            form
-                input(required='', type='text', new-style='ap')
-                label(alt='搜索', placeholder='开始搜索')
+                input#search-input(required='', type='text', new-style='ap')
+                label(alt='搜索', placeholder='按下回车开始搜索')
+                - var search_link = path.indexOf('/blog/mine') != -1 || path.indexOf('/blog/following') != -1 ? (path.indexOf('/blog/mine') != -1 ? '/blog/mine' : '/blog/following' ) : '/blog'
+                input#search-path(type='hidden', value='#{search_link}')
